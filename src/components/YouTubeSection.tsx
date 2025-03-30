@@ -1,43 +1,55 @@
-
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Play, Youtube } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Play, Youtube } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 // Sample YouTube videos with improved data
 const videos = [
   {
     id: 1,
-    title: 'Understanding Banking & Insurance',
-    description: 'Learn the basics of how banking and insurance services work together.',
-    thumbnail: 'https://via.placeholder.com/400x225',
-    duration: '12:45',
-    videoId: 'dQw4w9WgXcQ', // Replace with actual YouTube video IDs
+    title: "Understanding Banking & Insurance",
+    description:
+      "Learn the basics of how banking and insurance services work together.",
+    thumbnail:
+      "https://images.pexels.com/photos/3576258/pexels-photo-3576258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    duration: "12:45",
+    videoId: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
   },
   {
     id: 2,
-    title: 'Financial Planning Tips',
-    description: 'Essential tips for planning your financial future and investments.',
-    thumbnail: 'https://via.placeholder.com/400x225',
-    duration: '08:32',
-    videoId: 'dQw4w9WgXcQ', // Replace with actual YouTube video IDs
+    title: "Financial Planning Tips",
+    description:
+      "Essential tips for planning your financial future and investments.",
+    thumbnail:
+      "https://images.pexels.com/photos/3576258/pexels-photo-3576258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    duration: "08:32",
+    videoId: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
   },
   {
     id: 3,
-    title: 'Career Growth in Banking',
-    description: 'How to progress your career in the banking sector with practical advice.',
-    thumbnail: 'https://via.placeholder.com/400x225',
-    duration: '15:21',
-    videoId: 'dQw4w9WgXcQ', // Replace with actual YouTube video IDs
+    title: "Career Growth in Banking",
+    description:
+      "How to progress your career in the banking sector with practical advice.",
+    thumbnail:
+      "https://images.pexels.com/photos/3576258/pexels-photo-3576258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    duration: "15:21",
+    videoId: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
   },
 ];
 
 const YouTubeSection = () => {
-  const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<(typeof videos)[0] | null>(
+    null
+  );
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const handleVideoClick = (video: typeof videos[0]) => {
+  const handleVideoClick = (video: (typeof videos)[0]) => {
     setSelectedVideo(video);
     setIsDialogOpen(true);
   };
@@ -57,10 +69,14 @@ const YouTubeSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 inline-block text-gradient">YouTube Content</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 inline-block text-gradient">
+            YouTube Content
+          </h2>
           <div className="h-1 w-20 bg-primary/20 dark:bg-white/20 mx-auto rounded-full"></div>
           <p className="text-muted-foreground max-w-2xl mx-auto mt-6">
-            I create educational content focused on banking, insurance, and personal finance to help others understand complex financial concepts.
+            I create educational content focused on banking, insurance, and
+            personal finance to help others understand complex financial
+            concepts.
           </p>
         </motion.div>
 
@@ -72,18 +88,18 @@ const YouTubeSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              whileHover={{ 
+              whileHover={{
                 y: -8,
                 boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                transition: { duration: 0.2 } 
+                transition: { duration: 0.2 },
               }}
               className="glass-card overflow-hidden group cursor-pointer"
               onClick={() => handleVideoClick(video)}
             >
               <div className="relative overflow-hidden rounded-lg mb-4 aspect-video">
-                <img 
-                  src={video.thumbnail} 
-                  alt={video.title} 
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -95,8 +111,12 @@ const YouTubeSection = () => {
                   {video.duration}
                 </div>
               </div>
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-primary dark:group-hover:text-white transition-colors duration-300">{video.title}</h3>
-              <p className="text-sm text-muted-foreground line-clamp-2">{video.description}</p>
+              <h3 className="text-lg font-semibold mb-2 group-hover:text-primary dark:group-hover:text-white transition-colors duration-300">
+                {video.title}
+              </h3>
+              <p className="text-sm text-muted-foreground line-clamp-2">
+                {video.description}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -110,19 +130,24 @@ const YouTubeSection = () => {
         >
           <Button
             className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 rounded-full font-medium transition-all duration-300 hover:shadow-lg"
-            onClick={() => window.open('https://www.youtube.com/channel/REPLACE_WITH_ACTUAL_CHANNEL_ID', '_blank')}
+            onClick={() =>
+              window.open(
+                "https://www.youtube.com/channel/REPLACE_WITH_ACTUAL_CHANNEL_ID",
+                "_blank"
+              )
+            }
           >
             <Youtube className="h-5 w-5 mr-2" /> Visit My YouTube Channel
           </Button>
           <div className="flex justify-center gap-6 mt-8">
-            <motion.div 
+            <motion.div
               className="glass-card py-3 px-6"
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
               <p className="text-lg font-bold">15+</p>
               <p className="text-sm text-muted-foreground">Videos</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="glass-card py-3 px-6"
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
@@ -137,13 +162,15 @@ const YouTubeSection = () => {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-4xl bg-background/95 backdrop-blur-sm border border-primary/10">
           <DialogHeader>
-            <DialogTitle className="text-xl sm:text-2xl">{selectedVideo?.title}</DialogTitle>
+            <DialogTitle className="text-xl sm:text-2xl">
+              {selectedVideo?.title}
+            </DialogTitle>
           </DialogHeader>
-          
+
           <div className="mt-4">
             <div className="relative pb-[56.25%] h-0 rounded-lg overflow-hidden">
               {selectedVideo && (
-                <iframe 
+                <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-lg"
                   src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1`}
                   title={selectedVideo.title}
@@ -153,11 +180,15 @@ const YouTubeSection = () => {
                 ></iframe>
               )}
             </div>
-            
+
             {selectedVideo && (
               <div className="mt-4 space-y-2">
-                <p className="text-sm font-medium text-muted-foreground">{selectedVideo.duration} minutes</p>
-                <p className="text-muted-foreground">{selectedVideo.description}</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  {selectedVideo.duration} minutes
+                </p>
+                <p className="text-muted-foreground">
+                  {selectedVideo.description}
+                </p>
               </div>
             )}
           </div>
